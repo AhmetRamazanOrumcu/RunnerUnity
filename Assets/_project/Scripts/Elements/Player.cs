@@ -27,7 +27,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
         if(Input.GetMouseButton(0))
         {
-            _horizontalInput += Input.GetAxis("Mouse X")/Screen.width;
+            _horizontalInput += Input.GetAxis("Mouse X")/Screen.width;//Her cihazýn büyüklüðüne göre x deðerleri farklý olacaðý için 
             var pos = transform.position;
             pos.x = _initalXPos + _horizontalInput*sensitivity;
             transform.position = pos;

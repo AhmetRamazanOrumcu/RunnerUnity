@@ -21,25 +21,30 @@ public class LevelManager : MonoBehaviour
     }
     public void CreateLevel()
     {
-        CreateTiles(10);
+        _currentLevel = new GameObject("Map");
+        CreateTiles(30);
     }
 
-    private void CreateTiles(int Count)
+    public void CreateTiles(int Count)
     {
         GameObject newTile;
         for (int i = 0; i < Count; i++)
         {
             if(_tiles.Count %2==0)
             {
-                newTile = Instantiate(lightTilePrefab);
+                newTile = Instantiate(lightTilePrefab,_currentLevel.transform);
 
             }
             else
             { 
-                newTile = Instantiate(darkTilePrefab);
+                newTile = Instantiate(darkTilePrefab,_currentLevel.transform);
             }
-            newTile.transform.position = new Vector3(0, 0, i * 5);
+            newTile.transform.position = new Vector3(0, 0,_tiles.Count* 5);
             _tiles.Add(newTile);
         }
+    }
+    public float GetLastTilePosition()
+    {
+        return (_tiles.Count * 5)-5;
     }
 }

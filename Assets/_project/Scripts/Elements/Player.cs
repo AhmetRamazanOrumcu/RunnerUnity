@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    public GameManager gameDirector;
     public float speed;
     public Transform cameraHolder;
     public float sensitivity;
     public float maxWith;
+     
 
     private float _initalXPos;
     private float _horizontalInput;
@@ -45,6 +47,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
         var cameraPos = transform.position;
         cameraPos.x = 0;
         cameraHolder.position = cameraPos;
+
+        if(gameDirector.levelManager.GetLastTilePosition()-transform.position.z<100)
+        {
+            gameDirector.levelManager.CreateTiles(1);
+        }
+
     }
 
     private void CalmPlayerPosition()

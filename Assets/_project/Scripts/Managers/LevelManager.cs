@@ -46,26 +46,28 @@ public class LevelManager : MonoBehaviour
             _lastTileIndex += 1;
             }
     }
-    public void AddTile()
+    public void MoveTile()
     {
-        GameObject newTile;
+        /* GameObject newTile;
 
-        if (_lastTileIndex % 2 == 0)
-        {
-            newTile = Instantiate(lightTilePrefab, _currentLevel.transform);
+         if (_lastTileIndex % 2 == 0)
+         {
+             newTile = Instantiate(lightTilePrefab, _currentLevel.transform);
 
-        }
-        else
-        {
-            newTile = Instantiate(darkTilePrefab, _currentLevel.transform);
-        }
+         }
+         else
+         {
+             newTile = Instantiate(darkTilePrefab, _currentLevel.transform);
+         }*/
+
+        GameObject newTile = _tiles[0];
         newTile.transform.position = new Vector3(0, 0, _lastTileIndex * 5);
         _tiles.Add(newTile);
         _lastTileIndex += 1;
-
-        Destroy(_tiles[0].gameObject);
         _tiles.RemoveAt(0);
+
     }
+
     public float GetLastTilePosition()
     {
         return (_lastTileIndex * 5)-5;

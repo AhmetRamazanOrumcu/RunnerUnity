@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public GameObject lightTilePrefab;
     public GameObject darkTilePrefab;
     private GameObject _currentLevel;
+    private int _lastTileIndex;
 
     private List<GameObject> _tiles = new List<GameObject>();
 
@@ -21,6 +22,7 @@ public class LevelManager : MonoBehaviour
     }
     public void CreateLevel()
     {
+        _lastTileIndex = 0;
         _currentLevel = new GameObject("Map");
         CreateTiles(30);
     }
@@ -30,7 +32,7 @@ public class LevelManager : MonoBehaviour
         GameObject newTile;
         for (int i = 0; i < Count; i++)
         {
-            if(_tiles.Count %2==0)
+            if(_lastTileIndex % 2==0)
             {
                 newTile = Instantiate(lightTilePrefab,_currentLevel.transform);
 
@@ -41,10 +43,12 @@ public class LevelManager : MonoBehaviour
             }
             newTile.transform.position = new Vector3(0, 0,_tiles.Count* 5);
             _tiles.Add(newTile);
+            _lastTileIndex += 1;
+            
         }
     }
     public float GetLastTilePosition()
     {
-        return (_tiles.Count * 5)-5;
+        return (_lastTileIndex * 5)-5;
     }
 }

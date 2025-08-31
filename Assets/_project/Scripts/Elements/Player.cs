@@ -14,7 +14,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private float _horizontalInput;
     private void Update()
     {
-        print(transform.position);
+        //print(transform.position);
         //transform.position = new Vector3(10, 10, 10);
 
         //transform.position +=Vector3.forward * Time.deltaTime*speed;

@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     private GameObject _currentLevel;
     private int _lastTileIndex;
 
-    private List<GameObject> _tiles = new List<GameObject>();
+    public List<GameObject> _tiles = new List<GameObject>();
 
    
     public void DeleteCurrentLevel()
@@ -41,11 +41,30 @@ public class LevelManager : MonoBehaviour
             { 
                 newTile = Instantiate(darkTilePrefab,_currentLevel.transform);
             }
-            newTile.transform.position = new Vector3(0, 0,_tiles.Count* 5);
+            newTile.transform.position = new Vector3(0, 0, _lastTileIndex * 5);
             _tiles.Add(newTile);
             _lastTileIndex += 1;
-            
+            }
+    }
+    public void AddTile()
+    {
+        GameObject newTile;
+
+        if (_lastTileIndex % 2 == 0)
+        {
+            newTile = Instantiate(lightTilePrefab, _currentLevel.transform);
+
         }
+        else
+        {
+            newTile = Instantiate(darkTilePrefab, _currentLevel.transform);
+        }
+        newTile.transform.position = new Vector3(0, 0, _lastTileIndex * 5);
+        _tiles.Add(newTile);
+        _lastTileIndex += 1;
+
+        Destroy(_tiles[0].gameObject);
+        _tiles.RemoveAt(0);
     }
     public float GetLastTilePosition()
     {

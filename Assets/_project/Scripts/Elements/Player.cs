@@ -50,7 +50,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if(gameDirector.levelManager.GetLastTilePosition()-transform.position.z<100)
         {
-            gameDirector.levelManager.CreateTiles(1);
+            gameDirector.levelManager.AddTile();
         }
 
     }

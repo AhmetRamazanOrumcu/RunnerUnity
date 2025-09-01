@@ -238,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.026351383, z: 0, w: 0.99965274}
-  m_LocalPosition: {x: 0.92, y: 1.79, z: -7.43}
+  m_LocalPosition: {x: 1.11, y: 1.79, z: -6.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -657,6 +657,7 @@ MonoBehaviour:
   cameraHolder: {fileID: 33892544}
   sensitivity: 200
   maxWith: 2
+  animator: {fileID: 1988451691}
 --- !u!1001 &1988451689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -709,6 +710,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: castle_guard_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: fd65da499ffce894582ea0621a348c0e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0d181f04589d57346bdfee242b3f21a2, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -717,6 +722,11 @@ PrefabInstance:
 --- !u!4 &1988451690 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fd65da499ffce894582ea0621a348c0e, type: 3}
+  m_PrefabInstance: {fileID: 1988451689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1988451691 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: fd65da499ffce894582ea0621a348c0e, type: 3}
   m_PrefabInstance: {fileID: 1988451689}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

@@ -8,8 +8,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public Transform cameraHolder;
     public float sensitivity;
     public float maxWith;
-     
 
+    private Animator _animator;
+
+    private void Start()
+    {
+        _animator = GetComponentInChildren<Animator>();
+    }
     private float _initalXPos;
     private float _horizontalInput;
     private void Update()
@@ -19,19 +24,19 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         //transform.position +=Vector3.forward * Time.deltaTime*speed;
 
-        
 
-        if(Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButtonDown(0))
         {
             _initalXPos = transform.position.x;
             //print(_initalXPos);
-
+            
         }
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
-            _horizontalInput += Input.GetAxis("Mouse X")/Screen.width;//Her cihazýn büyüklüðüne göre x deðerleri farklý olacaðý için 
+            _horizontalInput += Input.GetAxis("Mouse X") / Screen.width;//Her cihazýn büyüklüðüne göre x deðerleri farklý olacaðý için 
             var pos = transform.position;
-            pos.x = _initalXPos + _horizontalInput*sensitivity;
+            pos.x = _initalXPos + _horizontalInput * sensitivity;
             transform.position = pos;
 
             CalmPlayerPosition();
@@ -39,27 +44,32 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             _horizontalInput = 0;
+            _animator.SetTrigger("JumpNaruto");//animasyon parametresine göre yazýyoruz.
         }
 
-        
+
         transform.position += Vector3.forward * Time.deltaTime * speed;
 
         var cameraPos = transform.position;
         cameraPos.x = 0;
         cameraHolder.position = cameraPos;
 
-        if(gameDirector.levelManager.GetLastTilePosition()-transform.position.z<100)
+        if (gameDirector.levelManager.GetLastTilePosition() - transform.position.z < 100)
         {
             gameDirector.levelManager.MoveTile();
 
         }
 
+        
     }
 
     private void CalmPlayerPosition()
     {//sýnýrlarý belirlemek için hareketin
         var pos = transform.position;
-        pos.x=Mathf.Clamp(pos.x,-maxWith,maxWith);
+        pos.x = Mathf.Clamp(pos.x, -maxWith, maxWith);
         transform.position = pos;
     }
+
+    
+
 }

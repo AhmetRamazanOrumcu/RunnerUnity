@@ -51,6 +51,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if(gameDirector.levelManager.GetLastTilePosition()-transform.position.z<100)
         {
             gameDirector.levelManager.MoveTile();
+
         }
 
     }

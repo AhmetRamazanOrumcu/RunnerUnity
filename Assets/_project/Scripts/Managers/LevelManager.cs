@@ -44,21 +44,11 @@ public class LevelManager : MonoBehaviour
             newTile.transform.position = new Vector3(0, 0, _lastTileIndex * 5);
             _tiles.Add(newTile);
             _lastTileIndex += 1;
-            }
+        }
     }
     public void MoveTile()
     {
-        /* GameObject newTile;
-
-         if (_lastTileIndex % 2 == 0)
-         {
-             newTile = Instantiate(lightTilePrefab, _currentLevel.transform);
-
-         }
-         else
-         {
-             newTile = Instantiate(darkTilePrefab, _currentLevel.transform);
-         }*/
+        
 
         GameObject newTile = _tiles[0];
         newTile.transform.position = new Vector3(0, 0, _lastTileIndex * 5);

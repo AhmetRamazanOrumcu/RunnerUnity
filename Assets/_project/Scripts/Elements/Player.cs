@@ -19,6 +19,15 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     private float _initalXPos;
     private float _horizontalInput;
+
+    private void Update()
+    {
+        if(Input.GetMouseButtonUp(0))
+        {
+            _animator.SetTrigger("JumpNaruto");//animasyon parametresine göre yazýyoruz.
+        }
+        
+    }
     private void FixedUpdate()
     {
         //print(transform.position);
@@ -46,7 +55,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             _horizontalInput = 0;
-            _animator.SetTrigger("JumpNaruto");//animasyon parametresine göre yazýyoruz.
+            
         }
 
 

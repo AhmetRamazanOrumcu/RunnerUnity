@@ -19,7 +19,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     private float _initalXPos;
     private float _horizontalInput;
-    private void Update()
+    private void FixedUpdate()
     {
         //print(transform.position);
         //transform.position = new Vector3(10, 10, 10);

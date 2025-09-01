@@ -8,7 +8,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public Transform cameraHolder;
     public float sensitivity;
     public float maxWith;
+    public float jumpPower;
     private Rigidbody _rb;
+    
 
     private Animator _animator;
 
@@ -25,6 +27,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if(Input.GetMouseButtonUp(0))
         {
             _animator.SetTrigger("JumpNaruto");//animasyon parametresine göre yazýyoruz.
+            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, jumpPower, _rb.linearVelocity.z);
         }
         
     }

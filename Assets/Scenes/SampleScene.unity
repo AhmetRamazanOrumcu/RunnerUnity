@@ -658,7 +658,7 @@ MonoBehaviour:
   cameraHolder: {fileID: 33892544}
   sensitivity: 200
   maxWith: 2
-  jumpPower: 4
+  jumpPower: 5
 --- !u!54 &1757448386
 Rigidbody:
   m_ObjectHideFlags: 0

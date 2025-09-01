@@ -8,12 +8,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public Transform cameraHolder;
     public float sensitivity;
     public float maxWith;
+    private Rigidbody _rb;
 
     private Animator _animator;
 
     private void Start()
     {
         _animator = GetComponentInChildren<Animator>();
+        _rb = GetComponent<Rigidbody>();
     }
     private float _initalXPos;
     private float _horizontalInput;
@@ -28,16 +30,16 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            _initalXPos = transform.position.x;
+            _initalXPos = _rb.position.x;
             //print(_initalXPos);
             
         }
         if (Input.GetMouseButton(0))
         {
             _horizontalInput += Input.GetAxis("Mouse X") / Screen.width;//Her cihazýn büyüklüðüne göre x deðerleri farklý olacaðý için 
-            var pos = transform.position;
+            var pos = _rb.position;
             pos.x = _initalXPos + _horizontalInput * sensitivity;
-            transform.position = pos;
+            _rb.position = pos;
 
             CalmPlayerPosition();
         }
@@ -48,13 +50,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
         }
 
 
-        transform.position += Vector3.forward * Time.deltaTime * speed;
+        _rb.position += Vector3.forward * Time.deltaTime * speed;
 
-        var cameraPos = transform.position;
+        var cameraPos = _rb.position;
         cameraPos.x = 0;
         cameraHolder.position = cameraPos;
 
-        if (gameDirector.levelManager.GetLastTilePosition() - transform.position.z < 100)
+        if (gameDirector.levelManager.GetLastTilePosition() - _rb.position.z < 100)
         {
             gameDirector.levelManager.MoveTile();
 
@@ -65,9 +67,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void CalmPlayerPosition()
     {//sýnýrlarý belirlemek için hareketin
-        var pos = transform.position;
+        var pos = _rb.position;
         pos.x = Mathf.Clamp(pos.x, -maxWith, maxWith);
-        transform.position = pos;
+        _rb.position = pos;
     }
 
     

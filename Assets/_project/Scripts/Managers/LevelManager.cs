@@ -65,15 +65,13 @@ public class LevelManager : MonoBehaviour
     }
     public void MoveTile()
     {
-        
-
         Tile newTile = _tiles[0];
         newTile.transform.position = new Vector3(0, 0, _lastTileIndex * 5);
         _tiles.Add(newTile);
         _lastTileIndex += 1;
         _tiles.RemoveAt(0);
-
-        if (UnityEngine.Random.value < .3f)
+        var obstacleSpawnChance = .3f;
+        if (UnityEngine.Random.value <obstacleSpawnChance)
         {
             newTile.SetObstacle(true);
         }

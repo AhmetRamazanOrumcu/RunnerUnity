@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public GameObject lightTilePrefab;
-    public GameObject darkTilePrefab;
+    public Tile lightTilePrefab;
+    public Tile darkTilePrefab;
     private GameObject _currentLevel;
     private int _lastTileIndex;
 
-    public List<GameObject> _tiles = new List<GameObject>();
+    public List<Tile> _tiles = new List<Tile>();
 
    
     public void DeleteCurrentLevel()
@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour
 
     public void CreateTiles(int Count)
     {
-        GameObject newTile;
+        Tile newTile;
         for (int i = 0; i < Count; i++)
         {
             if(_lastTileIndex % 2==0)
@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
     {
         
 
-        GameObject newTile = _tiles[0];
+        Tile newTile = _tiles[0];
         newTile.transform.position = new Vector3(0, 0, _lastTileIndex * 5);
         _tiles.Add(newTile);
         _lastTileIndex += 1;

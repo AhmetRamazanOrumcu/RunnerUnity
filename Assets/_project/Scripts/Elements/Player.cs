@@ -10,9 +10,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public float maxWith;
     public float jumpPower;
     private Rigidbody _rb;
-    
 
     private Animator _animator;
+    private bool _isDead;
 
     private void Start()
     {
@@ -24,6 +24,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void Update()
     {
+        if(_isDead)
+        {
+            return;
+        }
         if(Input.GetMouseButtonUp(0))
         {
             _animator.SetTrigger("JumpNaruto");//animasyon parametresine göre yazýyoruz.
@@ -38,7 +42,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         //transform.position +=Vector3.forward * Time.deltaTime*speed;
 
-
+        if(_isDead)
+        {
+            return;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -84,6 +91,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
         _rb.position = pos;
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Obstacle"))
+        {
+            _isDead = true;
+            _animator.SetTrigger("FallBack");
+        }
+    }
 
 }

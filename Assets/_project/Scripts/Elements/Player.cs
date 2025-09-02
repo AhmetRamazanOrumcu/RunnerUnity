@@ -99,5 +99,5 @@ public class NewMonoBehaviourScript : MonoBehaviour
             _animator.SetTrigger("FallBack");
         }
     }
-
+    
 }

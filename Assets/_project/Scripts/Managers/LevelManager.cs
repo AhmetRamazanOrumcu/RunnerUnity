@@ -44,6 +44,7 @@ public class LevelManager : MonoBehaviour
             newTile.transform.position = new Vector3(0, 0, _lastTileIndex * 5);
             _tiles.Add(newTile);
             _lastTileIndex += 1;
+            newTile.StartTile(true);
         }
     }
     public void MoveTile()

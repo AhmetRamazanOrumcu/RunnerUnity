@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
         if(haveObstacle)
         {
             obstacle.SetActive(true);
+            obstacle.transform.localPosition=new Vector3(Random.Range(-2f,2f),.5f,0);
         }
         else
         {

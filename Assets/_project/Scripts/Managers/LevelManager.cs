@@ -71,6 +71,9 @@ public class LevelManager : MonoBehaviour
         _lastTileIndex += 1;
         _tiles.RemoveAt(0);
         var obstacleSpawnChance = .3f;
+
+        obstacleSpawnChance+=Mathf.Min((_lastTileIndex - 30) * .01f,.4f);
+        
         if (UnityEngine.Random.value <obstacleSpawnChance)
         {
             newTile.SetObstacle(true);

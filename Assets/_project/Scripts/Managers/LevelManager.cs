@@ -44,7 +44,23 @@ public class LevelManager : MonoBehaviour
             newTile.transform.position = new Vector3(0, 0, _lastTileIndex * 5);
             _tiles.Add(newTile);
             _lastTileIndex += 1;
-            newTile.StartTile(true);
+            if(_lastTileIndex<10)
+            {
+                newTile.SetObstacle(false);
+            }
+            else
+            {
+                if (UnityEngine.Random.value < .3f)
+                {
+                    newTile.SetObstacle(true);
+                }
+                else
+                {
+                    newTile.SetObstacle(false);
+                }
+            }
+            
+
         }
     }
     public void MoveTile()
@@ -57,6 +73,14 @@ public class LevelManager : MonoBehaviour
         _lastTileIndex += 1;
         _tiles.RemoveAt(0);
 
+        if (UnityEngine.Random.value < .3f)
+        {
+            newTile.SetObstacle(true);
+        }
+        else
+        {
+            newTile.SetObstacle(false);
+        }
     }
 
     public float GetLastTilePosition()

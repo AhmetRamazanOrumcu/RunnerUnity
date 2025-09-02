@@ -3,7 +3,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public GameObject obstacle;
-   public void StartTile(bool haveObstacle)
+   public void SetObstacle(bool haveObstacle)
     {
         if(haveObstacle)
         {

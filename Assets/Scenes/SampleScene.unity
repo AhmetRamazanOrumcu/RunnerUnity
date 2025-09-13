@@ -1049,7 +1049,7 @@ MonoBehaviour:
   gameDirector: {fileID: 1530526830}
   speed: 20
   cameraHolder: {fileID: 33892544}
-  sensitivity: 400
+  sensitivity: 600
   maxWith: 2
   jumpPower: 5
 --- !u!54 &1757448386

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private Animator _animator;
     private bool _isDead;
 
+    private bool _isLevelFinished;
+
     private void Start()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -22,8 +25,23 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private float _initalXPos;
     private float _horizontalInput;
 
+    void RestartScene()
+    {
+        SceneManager.LoadScene(0);
+    }
     private void Update()
     {
+        print(transform.position.z);
+        if(transform.position.z>100&& !_isLevelFinished)
+        {
+            _isLevelFinished = true;
+            speed = 0;
+            print(message: "Finished");
+            Invoke(methodName: "RestartScene", time: 2f);
+
+        }
+        
+
         if(_isDead)
         {
             return;

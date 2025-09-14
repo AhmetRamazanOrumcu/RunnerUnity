@@ -1,4 +1,6 @@
 using System;
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +19,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private bool _isLevelFinished;
 
+    private bool _isJump;
+
+    private int score;
+
+    private bool _isFinishedCreate;
+
+
     private void Start()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -31,28 +40,33 @@ public class NewMonoBehaviourScript : MonoBehaviour
     }
     private void Update()
     {
-        print(transform.position.z);
-        if(transform.position.z>100&& !_isLevelFinished)
-        {
-            _isLevelFinished = true;
-            speed = 0;
-            print(message: "Finished");
-            Invoke(methodName: "RestartScene", time: 2f);
+        score = (int)transform.position.z;
 
+        if (gameDirector.levelManager.scoreTMP!=null) 
+        {
+            gameDirector.levelManager.scoreTMP.text = "SCORE:"+score.ToString();
         }
-        
+        print("Gittiði Mesafe:"+transform.position.z);
 
         if(_isDead)
         {
             return;
         }
-        if(Input.GetMouseButtonUp(0))
+        if ( _isLevelFinished)
         {
-            _animator.SetTrigger("JumpNaruto");//animasyon parametresine göre yazýyoruz.
-            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, jumpPower, _rb.linearVelocity.z);
+            return;
         }
+
+        if (Input.GetMouseButtonUp(0)&& !_isJump)
+        {
+           _animator.SetTrigger("JumpNaruto");//animasyon parametresine göre yazýyoruz.
+            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, jumpPower, _rb.linearVelocity.z);
+            _isJump = true;
+            }
+
         
     }
+    
     private void FixedUpdate()
     {
         //print(transform.position);
@@ -60,7 +74,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         //transform.position +=Vector3.forward * Time.deltaTime*speed;
 
-        if(_isDead)
+        if(_isDead || _isLevelFinished)
         {
             return;
         }
@@ -93,12 +107,24 @@ public class NewMonoBehaviourScript : MonoBehaviour
         cameraPos.x = 0;
         cameraHolder.position = cameraPos;
 
+
+
+        int difficultyDistance = UnityEngine.Random.Range(145, 536);
+
         if (gameDirector.levelManager.GetLastTilePosition() - _rb.position.z < 100)
         {
+            if(transform.position.z !< difficultyDistance) 
+            { 
             gameDirector.levelManager.MoveTile();
+            }
+            else if(!_isFinishedCreate)
+            {
+                _isFinishedCreate = true;
+                gameDirector.levelManager.FinishedTile();
+                gameDirector.levelManager.GetLastTilePositionPlus();
+            }
 
         }
-
         
     }
 
@@ -116,6 +142,22 @@ public class NewMonoBehaviourScript : MonoBehaviour
             _isDead = true;
             _animator.SetTrigger("FallBack");
         }
+        if (other.CompareTag("FinishBlock"))
+        {
+
+            _isLevelFinished = true;
+            _animator.SetTrigger("Finished");
+        }
+        
+
     }
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            _isJump = false;
+        }
+    }
+
+
 }

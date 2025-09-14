@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: af737d58f9002af44b6c8be912d1fd6a, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a15bb8dae77d8de4a923640d20108a44, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -400,7 +400,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mesafe:'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7ade495e2ebd15f4ea188c2a0fb52fc8, type: 2}
   m_sharedMaterial: {fileID: 1032182660002792425, guid: 7ade495e2ebd15f4ea188c2a0fb52fc8, type: 2}
@@ -708,9 +708,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c64d8bbccf8ba4faadc45d0a890bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightTilePrefab: {fileID: 3086349153568900856, guid: bbe9159869174a6489880fdea9f8adf4, type: 3}
+  lightTilePrefab: {fileID: 2603589429223937490, guid: 8db144ab19602d646ae2cd08919c467d, type: 3}
   darkTilePrefab: {fileID: 2603589429223937490, guid: 7ab530a8fdf554a40ab5de963869384b, type: 3}
+  finishedTilePrefab: {fileID: 8882527357213294240, guid: 306d7ecffeee01f40a8281c54b24beb8, type: 3}
   _tiles: []
+  scoreTMP: {fileID: 381821417}
 --- !u!4 &610234813
 Transform:
   m_ObjectHideFlags: 0

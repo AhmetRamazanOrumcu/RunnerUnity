@@ -1,18 +1,20 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
     public Tile lightTilePrefab;
     public Tile darkTilePrefab;
+    public GameObject finishedTilePrefab;
     private GameObject _currentLevel;
     private int _lastTileIndex;
 
     public List<Tile> _tiles = new List<Tile>();
 
-   
+    public TMP_Text scoreTMP;
     public void DeleteCurrentLevel()
     {
         if(_currentLevel)
@@ -83,10 +85,19 @@ public class LevelManager : MonoBehaviour
             newTile.SetObstacle(false);
         }
     }
+    public void FinishedTile()
+    {
+        GameObject newTile = Instantiate(finishedTilePrefab, _currentLevel.transform);
+        newTile.transform.position = new Vector3(0, 0, _lastTileIndex * 5);
+    }
 
     public float GetLastTilePosition()
     {
         return (_lastTileIndex * 5)-5;
+    }
+    public void GetLastTilePositionPlus()
+    {
+        _lastTileIndex++;
     }
 
 }

@@ -25,6 +25,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private bool _isFinishedCreate;
 
+    public Canvas canvas;
+
 
     private void Start()
     {
@@ -76,7 +78,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if(_isDead || _isLevelFinished)
         {
+            canvas.gameObject.SetActive(true);
+
+
             return;
+
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -137,7 +143,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Obstacle"))
+        
+
+        if (other.CompareTag("Obstacle"))
         {
             _isDead = true;
             _animator.SetTrigger("FallBack");
@@ -147,6 +155,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
             _isLevelFinished = true;
             _animator.SetTrigger("Finished");
+
         }
         
 

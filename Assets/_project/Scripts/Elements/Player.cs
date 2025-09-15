@@ -1,3 +1,4 @@
+
 using System;
 using System.Runtime.CompilerServices;
 using TMPro;
@@ -25,7 +26,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private bool _isFinishedCreate;
 
-    public Canvas canvas;
+    public GameObject buttons;
 
 
     private void Start()
@@ -78,7 +79,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if(_isDead || _isLevelFinished)
         {
-            canvas.gameObject.SetActive(true);
+            buttons.SetActive(true);
 
 
             return;

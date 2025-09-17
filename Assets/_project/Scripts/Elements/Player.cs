@@ -27,6 +27,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private bool _isFinishedCreate;
 
     public GameObject buttons;
+     
+
 
 
     private void Start()

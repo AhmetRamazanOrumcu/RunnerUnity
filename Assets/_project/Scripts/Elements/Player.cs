@@ -67,7 +67,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
            _animator.SetTrigger("JumpNaruto");//animasyon parametresine göre yazýyoruz.
             _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, jumpPower, _rb.linearVelocity.z);
             _isJump = true;
-            }
+        }
 
         
     }
@@ -170,6 +170,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
             _isJump = false;
         }
     }
-
+    
 
 }
